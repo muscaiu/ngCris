@@ -1,8 +1,11 @@
 import {Component} from '@angular/core';
 
+import {NavbarComponent} from './shared/navbar.component';
+
 @Component({
     selector: 'my-app',
-    template: '<h1>hi<h1>'
+    template: '<navbar></navbar>',
+    directives: [NavbarComponent] 
 })
 
 export class AppComponent{
