@@ -1,20 +1,30 @@
 import {Component} from '@angular/core';
+//import {RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+import { RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 
 import {NavbarComponent} from './navbar.component';
 import {HomeComponent} from './home/home.component';
 import {UsersComponent} from './users/users.component';
 import {PostsComponent} from './posts/posts.component';
 
-
+@RouteConfig ([
+    { path: '/', name: 'Home', component: HomeComponent},
+    { path: '/users', name: 'Users', component: UsersComponent},
+    { path: '/posts', name: 'Posts', component: PostsComponent},
+    { path: '/*other', name: 'Other', redirectTo: [HomeComponent]}
+])
 
 @Component({
     selector: 'my-app',
-    template: '<navbar></navbar>',
+    template: `
+        <navbar></navbar>
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
+    `,
     directives: [
         NavbarComponent,
-        HomeComponent,
-        UsersComponent,
-        PostsComponent
+        ROUTER_DIRECTIVES
         ] 
 })
 
