@@ -1,0 +1,18 @@
+<h2>Add User</h2>
+<div class="row">
+    <div class="col-md-6 col-sm-6 well">
+        <form [ngFormModel]="form">
+            <div class="control-group">
+                Name
+            </div>
+            <input ngControl="name" type="text" class="form-control">
+            <div class="control-group">
+                Email
+            </div>
+            <input ngControl="email" type="text" class="form-control">
+            <button type="submit" class="btn btn-success">
+                Save
+            </button>
+        </form>
+    </div>
+</div>
