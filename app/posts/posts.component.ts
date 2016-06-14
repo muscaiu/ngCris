@@ -1,11 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 
 import {PostService} from './post.service';
+import {SpinnerComponent} from'../shared/spinner.component';
 
 @Component({
     template: `
-        <h2>Posts<h2>
+        <h2>Posts<h2>        
         <div class="col-md-6 col-sm-6">
+          <spinner [visible]="postsLoading"></spinner>
             <ul class="list-group">
                 <li *ngFor="let p of posts"
                     class="list-group-item">
@@ -14,7 +16,8 @@ import {PostService} from './post.service';
             </ul>
         </div>
     `,
-    providers:[PostService]
+    providers:[PostService],
+    directives:[SpinnerComponent]
 })
 
 export class PostsComponent implements OnInit{
@@ -26,6 +29,8 @@ export class PostsComponent implements OnInit{
 
     ngOnInit(){
         this._postService.getPosts()
-            .subscribe(x => this.posts = x);
-    }
+            .subscribe(x => {
+                this.posts = x;
+                this.postsLoading = false;});
+    };
 }
