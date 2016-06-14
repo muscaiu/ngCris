@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
-import {FormBuilder, ControlGroup } from '@angular/common';
+import {FormBuilder, ControlGroup, Validators } from '@angular/common';
+
+import {BasicValidators} from '../shared/basicValidators';
 
 @Component({
     templateUrl:'app/users/new-user.component.html'
@@ -10,8 +12,8 @@ export class NewUserComponent{
 
     constructor(fb: FormBuilder){
         this.form = fb.group({
-            name:[],
-            email:[]
+            name:['', Validators.required],
+            email:['', BasicValidators.email]
         })
     }
 }
