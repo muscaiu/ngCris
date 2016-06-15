@@ -5,45 +5,7 @@ import {SpinnerComponent} from '../shared/spinner.component';
 import {UserService} from './user.service';
 
 @Component({
-    template: `
-        <h2>Users<h2>
-        <a 
-            [routerLink]="['NewUser']" 
-            class="btn btn-primary">
-        Add User
-        </a>        
-        <spinner [visible]="loadingUsers"></spinner>
-        <table class="table table-bordered table-hover">
-            <thead>
-                <tr>                
-                    <td>
-                       Name
-                    </td>
-                    <td>
-                       Email
-                    </td>
-                    <td>
-                       Delete
-                    </td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let u of users">                        
-                    <td>
-                        {{u.name}}
-                    </td>
-                    <td>
-                        {{u.email}}
-                    </td>
-                    <td>
-                        <i class="glyphicon glyphicon-remove clickable"
-                           (click)="deleteUser(u)">                        
-                        </i>                                                
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    `,
+    templateUrl: 'app/users/users.component.html',
     providers:[UserService],
     directives: [SpinnerComponent, RouterLink]
 })

@@ -1,0 +1,33 @@
+<h2>Users<h2>
+<a 
+    [routerLink]="['NewUser']" 
+    class="btn btn-primary">
+Add User
+</a>        
+<spinner [visible]="loadingUsers"></spinner>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>                
+            <th>Name</th>
+            <th>Email</th>
+            <th>Edit</th>
+            <th>Delete</th>            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let u of users">                        
+            <td>{{ u.name }}</td>
+            <td>{{ u.email }}</td>
+            <td>
+                <a [routerLink]="['EditUser', {id: u.id}]">
+                    <i class="glyphicon text-center glyphicon-edit"></i>
+                </a>                                                   
+            </td>
+            <td>
+                <i class="glyphicon glyphicon-remove clickable"
+                    (click)="deleteUser(u)">                        
+                </i>
+            </td>
+        </tr>
+    </tbody>
+</table>

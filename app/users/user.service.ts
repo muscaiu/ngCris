@@ -16,6 +16,10 @@ export class UserService{
         return this._http.get(this._url)
             .map(response => response.json());
     }
+    getUser(userId){
+        return this._http.get(this._url + "/" + userId)
+            .map(result => result.json());
+    }
     deleteUser(userId){
         return this._http.delete(this.getUserUrl(userId))
             .map(response => response.json());
