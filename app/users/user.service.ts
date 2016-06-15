@@ -17,7 +17,7 @@ export class UserService{
             .map(response => response.json());
     }
     getUser(userId){
-        return this._http.get(this._url + "/" + userId)
+        return this._http.get(this.getUserUrl(userId))
             .map(result => result.json());
     }
     deleteUser(userId){
@@ -29,6 +29,10 @@ export class UserService{
     }
     addUser(user){
         return this._http.post(this._url, JSON.stringify(user))
+            .map(result => result.json());
+    }
+    updateUser(user){
+        return this._http.put(this.getUserUrl(user.id), JSON.stringify(user))
             .map(result => result.json());
     }
 }

@@ -49,11 +49,23 @@ export class NewUserComponent implements OnInit,CanDeactivate {
 		return true; 
 	}
 	save (){
-		this._userService.addUser(this.form.value)
-			.subscribe(x =>{
-				//ideally:
-				//this.form.markAsPristine();
-				this._router.navigate(['Users']);
-			})
+		var result;
+		if(this.user.id){
+			result = this._userService.updateUser(this.user);
+		}
+		else{
+			result = this._userService.addUser(this.user)			
+		}
+		result.subscribe(x => {
+			//ideally:
+			//this.form.markAsPristine();
+			this._router.navigate(['Users']);
+		})
+		// this._userService.addUser(this.form.value)
+		// 	.subscribe(x =>{
+		// 		//ideally:
+		// 		//this.form.markAsPristine();
+		// 		this._router.navigate(['Users']);
+		// 	})		
 	}
 }
