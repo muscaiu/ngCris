@@ -22,5 +22,9 @@ export class UserService{
     }
     private getUserUrl(userId){
 		return this._url + "/" + userId;
-}
+    }
+    addUser(user){
+        return this._http.post(this._url, JSON.stringify(user))
+            .map(result => result.json());
+    }
 }
